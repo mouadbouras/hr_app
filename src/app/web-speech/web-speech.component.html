@@ -1,0 +1,72 @@
+  <!-- <mat-form-field>
+    <mat-select placeholder="Select your language"
+                [(ngModel)]="currentLanguage" [disabled]="recognizing">
+      <mat-option *ngFor="let language of languages" [value]="language" (click)="onSelectLanguage(language)">
+        {{language}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> -->
+
+
+  <div class="row">
+    <div class="col mb-3 text-center">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" 
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+                [disabled]="recognizing"  [value]="language">
+                {{currentLanguage}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <p class="dropdown-item" *ngFor="let language of languages"
+             (click)="onSelectLanguage(language)">                 
+             {{language}}
+        </p>
+        </div>
+      </div>    
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col col mb-3  text-center">
+      <div (click)="startButton($event)">
+        <!-- <p *ngIf="!recognizing">mic</p> -->
+        <img *ngIf="!recognizing" src="assets/images/mic.png" alt="Shipping Co Logo"  
+             class="rounded-circle bg-danger p-2" width="60">
+        <img *ngIf="recognizing" src="assets/images/stop.png" alt="Shipping Co Logo"  
+             class="rounded-circle bg-danger p-2" width="60">
+
+
+        <!-- <p *ngIf="recognizing">stop</p> -->
+      </div>    
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col text-center">
+      <form class="mb-3">
+        <!-- <mat-form-field class="speech-result-width"> -->
+          <textarea matInput class="form-control"
+                    [value]="finalTranscript" placeholder="Speech Input Result" 
+                    rows="15" disabled="true">
+          </textarea>
+        <!-- </mat-form-field> -->
+      </form>
+      
+      <div class="alert alert-primary" role="alert" 
+          *ngIf="notification" class="notification">
+          {{notification}}
+      </div>     
+    </div>
+  </div>
+  
+
+
+
+
+
+
+<!-- <div class="center">
+
+</div>
+
+-->
